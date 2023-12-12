@@ -3,12 +3,17 @@ const { PORT } = require('./constants/constants')
 const expressConfig = require('./config/expressConfig.js')
 const handlebarsConfig = require('./config/handlebarsConfig.js')
 const router = require('./router.js')
-const cookieParser = require('cookie-parser')
+const dbConnect = require('./database/dbConnect.js')
 
 const app = express()
 expressConfig(app)
 handlebarsConfig(app)
-app.use(cookieParser())
+/////////////////////////////////////////////////////////////////////////
+dbConnect()                                                           ////   
+    .then(() => { console.log('you connected with DB !'); })                  ////   
+    .catch((err) => { console.log(err.message); })                                   ////    
+//////////////////////////////////////////////////////////////////////////
+
 app.use(router)
 
 
