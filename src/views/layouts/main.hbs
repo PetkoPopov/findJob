@@ -6,7 +6,7 @@
     <title>Home Page</title>
 
     <!-- Do not forget to change the path to the css file -->
-    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
@@ -32,9 +32,10 @@
                     </li>
 
                     <li class="header-nav-list-item">
-                        <a href="all-adds" class="header-nav-list-item-link">All ads</a>
+                        <a href="/all-ads" class="header-nav-list-item-link">All ads</a>
                     </li>
                     <!-- Logged users -->
+                    {{#if isAuthenticated}}
                     <li class="header-nav-list-item">
                         <a href="/create" class="header-nav-list-item-link">Create Ad</a>
                     </li>
@@ -44,14 +45,17 @@
                     <li class="header-nav-list-item">
                         <a href="/logout" class="header-nav-list-item-link">Logout</a>
                     </li>
+                    {{/if}}
 
                     <!-- Guest users -->
+                  
                     <li class="header-nav-list-item">
-                        <a href="/register" class="header-nav-list-item-link">Register</a>
+                        <a href="/user/register" class="header-nav-list-item-link">Register</a>
                     </li>
                     <li class="header-nav-list-item">
-                        <a href="/login" class="header-nav-list-item-link">Login</a>
+                        <a href="/user/login" class="header-nav-list-item-link">Login</a>
                     </li>
+                    
                 </ul>
             </nav>
         </header>
