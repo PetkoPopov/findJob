@@ -10,13 +10,15 @@ exports.create = async ({ email, password, repeat_password }) => {
 }
 
 exports.login = async ({ email, password }) => {
-    const user = await User.find({ email })
+    const user = await User.findOne({ email })
     if (!user) {
         throw new Error("Invalid username !");
     }
 
     // validate password
+    
     const isValid = await bcrypt.compare(password, user.password);
+
     if (!isValid) {
         throw new Error("Invalid username or password!");
     }
